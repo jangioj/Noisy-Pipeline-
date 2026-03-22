@@ -389,3 +389,24 @@ stages:
     plots:
       - results/fr/per_vs_snr.png
 
+  plot_per_all:
+    cmd: >-
+      .\.venv\Scripts\python.exe scripts/plot_per.py
+      --input_metrics
+      results/en/per_snr_20.json
+      results/en/per_snr_10.json
+      results/en/per_snr_0.json
+      results/fr/per_snr_20.json
+      results/fr/per_snr_10.json
+      results/fr/per_snr_0.json
+      --output_plot results/per_vs_snr_all.png
+    deps:
+      - scripts/plot_per.py
+      - results/en/per_snr_20.json
+      - results/en/per_snr_10.json
+      - results/en/per_snr_0.json
+      - results/fr/per_snr_20.json
+      - results/fr/per_snr_10.json
+      - results/fr/per_snr_0.json
+    plots:
+      - results/per_vs_snr_all.png
