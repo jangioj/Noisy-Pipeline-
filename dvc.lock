@@ -54,3 +54,102 @@ stages:
       hash: md5
       md5: b21551412879ebd82a0ca93686ecfb46
       size: 3732
+  build_noisy_manifest_en_snr20:
+    cmd: .\.venv\Scripts\python.exe scripts/noisyator.py --input_manifest 
+      data/manifests/en/clean.jsonl --output_manifest 
+      data/manifests/en/noisy_snr_20.jsonl --output_audio_dir 
+      data/processed/en/noisy/20 --project_root . --snr_db 20 --seed 42
+    deps:
+    - path: data/manifests/en/clean.jsonl
+      hash: md5
+      md5: b21551412879ebd82a0ca93686ecfb46
+      size: 3732
+    - path: data/raw/en/audio
+      hash: md5
+      md5: bd7b9dad81d9db2c0a87851ee1fc89a7.dir
+      size: 346076
+      nfiles: 10
+    - path: scripts/noisyator.py
+      hash: md5
+      md5: b5b7a99e58d6f75812a46dae80a9be05
+      size: 4733
+    params:
+      params.yaml:
+        build_clean_manifest.project_root: .
+        noise.seed: 42
+    outs:
+    - path: data/manifests/en/noisy_snr_20.jsonl
+      hash: md5
+      md5: 818b1a0f826688f6d3aa356b21d64bba
+      size: 3932
+    - path: data/processed/en/noisy/20
+      hash: md5
+      md5: f1d823e93bc18b80f16ea2f3800f25b6.dir
+      size: 3769784
+      nfiles: 10
+  build_noisy_manifest_en_snr10:
+    cmd: .\.venv\Scripts\python.exe scripts/noisyator.py --input_manifest 
+      data/manifests/en/clean.jsonl --output_manifest 
+      data/manifests/en/noisy_snr_10.jsonl --output_audio_dir 
+      data/processed/en/noisy/10 --project_root . --snr_db 10 --seed 42
+    deps:
+    - path: data/manifests/en/clean.jsonl
+      hash: md5
+      md5: b21551412879ebd82a0ca93686ecfb46
+      size: 3732
+    - path: data/raw/en/audio
+      hash: md5
+      md5: bd7b9dad81d9db2c0a87851ee1fc89a7.dir
+      size: 346076
+      nfiles: 10
+    - path: scripts/noisyator.py
+      hash: md5
+      md5: b5b7a99e58d6f75812a46dae80a9be05
+      size: 4733
+    params:
+      params.yaml:
+        build_clean_manifest.project_root: .
+        noise.seed: 42
+    outs:
+    - path: data/manifests/en/noisy_snr_10.jsonl
+      hash: md5
+      md5: 313036ddc35cd2f823b5700b632511a1
+      size: 3932
+    - path: data/processed/en/noisy/10
+      hash: md5
+      md5: cc6bdca0f2011d868997fbdc71f84347.dir
+      size: 3769784
+      nfiles: 10
+  build_noisy_manifest_en_snr0:
+    cmd: .\.venv\Scripts\python.exe scripts/noisyator.py --input_manifest 
+      data/manifests/en/clean.jsonl --output_manifest 
+      data/manifests/en/noisy_snr_0.jsonl --output_audio_dir 
+      data/processed/en/noisy/0 --project_root . --snr_db 0 --seed 42
+    deps:
+    - path: data/manifests/en/clean.jsonl
+      hash: md5
+      md5: b21551412879ebd82a0ca93686ecfb46
+      size: 3732
+    - path: data/raw/en/audio
+      hash: md5
+      md5: bd7b9dad81d9db2c0a87851ee1fc89a7.dir
+      size: 346076
+      nfiles: 10
+    - path: scripts/noisyator.py
+      hash: md5
+      md5: b5b7a99e58d6f75812a46dae80a9be05
+      size: 4733
+    params:
+      params.yaml:
+        build_clean_manifest.project_root: .
+        noise.seed: 42
+    outs:
+    - path: data/manifests/en/noisy_snr_0.jsonl
+      hash: md5
+      md5: 7bc34e91e772abfd888dd17c3588440c
+      size: 3902
+    - path: data/processed/en/noisy/0
+      hash: md5
+      md5: 1dd34d47a101e5627b357ac3b908d712.dir
+      size: 3769784
+      nfiles: 10
