@@ -4,3 +4,9 @@ build_clean_manifest:
 
 noise:
   seed: 42
+
+predict:
+  model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
+  device: auto
+  target_sr: 16000
+  espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll

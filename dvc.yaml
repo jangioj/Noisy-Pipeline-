@@ -75,3 +75,72 @@ stages:
     outs:
       - data/manifests/en/noisy_snr_0.jsonl
       - data/processed/en/noisy/0
+
+  predict_en_snr20:
+    cmd: >-
+      .\.venv\Scripts\python.exe scripts/predict_phonemes.py
+      --input_manifest data/manifests/en/noisy_snr_20.jsonl
+      --output_manifest data/manifests/en/pred_snr_20.jsonl
+      --project_root ${build_clean_manifest.project_root}
+      --model_name ${predict.model_name}
+      --device ${predict.device}
+      --target_sr ${predict.target_sr}
+      --espeak_library "${predict.espeak_library}"
+    deps:
+      - scripts/predict_phonemes.py
+      - data/manifests/en/noisy_snr_20.jsonl
+      - data/processed/en/noisy/20
+    params:
+      - build_clean_manifest.project_root
+      - predict.model_name
+      - predict.device
+      - predict.target_sr
+      - predict.espeak_library
+    outs:
+      - data/manifests/en/pred_snr_20.jsonl
+
+  predict_en_snr10:
+    cmd: >-
+      .\.venv\Scripts\python.exe scripts/predict_phonemes.py
+      --input_manifest data/manifests/en/noisy_snr_10.jsonl
+      --output_manifest data/manifests/en/pred_snr_10.jsonl
+      --project_root ${build_clean_manifest.project_root}
+      --model_name ${predict.model_name}
+      --device ${predict.device}
+      --target_sr ${predict.target_sr}
+      --espeak_library "${predict.espeak_library}"
+    deps:
+      - scripts/predict_phonemes.py
+      - data/manifests/en/noisy_snr_10.jsonl
+      - data/processed/en/noisy/10
+    params:
+      - build_clean_manifest.project_root
+      - predict.model_name
+      - predict.device
+      - predict.target_sr
+      - predict.espeak_library
+    outs:
+      - data/manifests/en/pred_snr_10.jsonl
+
+  predict_en_snr0:
+    cmd: >-
+      .\.venv\Scripts\python.exe scripts/predict_phonemes.py
+      --input_manifest data/manifests/en/noisy_snr_0.jsonl
+      --output_manifest data/manifests/en/pred_snr_0.jsonl
+      --project_root ${build_clean_manifest.project_root}
+      --model_name ${predict.model_name}
+      --device ${predict.device}
+      --target_sr ${predict.target_sr}
+      --espeak_library "${predict.espeak_library}"
+    deps:
+      - scripts/predict_phonemes.py
+      - data/manifests/en/noisy_snr_0.jsonl
+      - data/processed/en/noisy/0
+    params:
+      - build_clean_manifest.project_root
+      - predict.model_name
+      - predict.device
+      - predict.target_sr
+      - predict.espeak_library
+    outs:
+      - data/manifests/en/pred_snr_0.jsonl

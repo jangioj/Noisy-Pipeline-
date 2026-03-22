@@ -153,3 +153,99 @@ stages:
       md5: 1dd34d47a101e5627b357ac3b908d712.dir
       size: 3769784
       nfiles: 10
+  predict_en_snr20:
+    cmd: .\.venv\Scripts\python.exe scripts/predict_phonemes.py --input_manifest
+      data/manifests/en/noisy_snr_20.jsonl --output_manifest 
+      data/manifests/en/pred_snr_20.jsonl --project_root . --model_name 
+      facebook/wav2vec2-lv-60-espeak-cv-ft --device auto --target_sr 16000 
+      --espeak_library "C:/Program Files/eSpeak NG/libespeak-ng.dll"
+    deps:
+    - path: data/manifests/en/noisy_snr_20.jsonl
+      hash: md5
+      md5: 818b1a0f826688f6d3aa356b21d64bba
+      size: 3932
+    - path: data/processed/en/noisy/20
+      hash: md5
+      md5: f1d823e93bc18b80f16ea2f3800f25b6.dir
+      size: 3769784
+      nfiles: 10
+    - path: scripts/predict_phonemes.py
+      hash: md5
+      md5: 1206840ce8bb79c8fbf46cf7ec373204
+      size: 5174
+    params:
+      params.yaml:
+        build_clean_manifest.project_root: .
+        predict.device: auto
+        predict.espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll
+        predict.model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
+        predict.target_sr: 16000
+    outs:
+    - path: data/manifests/en/pred_snr_20.jsonl
+      hash: md5
+      md5: 0f9b350c14f8aef3b8b56e27e2e4526e
+      size: 5213
+  predict_en_snr10:
+    cmd: .\.venv\Scripts\python.exe scripts/predict_phonemes.py --input_manifest
+      data/manifests/en/noisy_snr_10.jsonl --output_manifest 
+      data/manifests/en/pred_snr_10.jsonl --project_root . --model_name 
+      facebook/wav2vec2-lv-60-espeak-cv-ft --device auto --target_sr 16000 
+      --espeak_library "C:/Program Files/eSpeak NG/libespeak-ng.dll"
+    deps:
+    - path: data/manifests/en/noisy_snr_10.jsonl
+      hash: md5
+      md5: 313036ddc35cd2f823b5700b632511a1
+      size: 3932
+    - path: data/processed/en/noisy/10
+      hash: md5
+      md5: cc6bdca0f2011d868997fbdc71f84347.dir
+      size: 3769784
+      nfiles: 10
+    - path: scripts/predict_phonemes.py
+      hash: md5
+      md5: 1206840ce8bb79c8fbf46cf7ec373204
+      size: 5174
+    params:
+      params.yaml:
+        build_clean_manifest.project_root: .
+        predict.device: auto
+        predict.espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll
+        predict.model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
+        predict.target_sr: 16000
+    outs:
+    - path: data/manifests/en/pred_snr_10.jsonl
+      hash: md5
+      md5: 4d0661505159239866311c3bf037c8a2
+      size: 5119
+  predict_en_snr0:
+    cmd: .\.venv\Scripts\python.exe scripts/predict_phonemes.py --input_manifest
+      data/manifests/en/noisy_snr_0.jsonl --output_manifest 
+      data/manifests/en/pred_snr_0.jsonl --project_root . --model_name 
+      facebook/wav2vec2-lv-60-espeak-cv-ft --device auto --target_sr 16000 
+      --espeak_library "C:/Program Files/eSpeak NG/libespeak-ng.dll"
+    deps:
+    - path: data/manifests/en/noisy_snr_0.jsonl
+      hash: md5
+      md5: 7bc34e91e772abfd888dd17c3588440c
+      size: 3902
+    - path: data/processed/en/noisy/0
+      hash: md5
+      md5: 1dd34d47a101e5627b357ac3b908d712.dir
+      size: 3769784
+      nfiles: 10
+    - path: scripts/predict_phonemes.py
+      hash: md5
+      md5: 1206840ce8bb79c8fbf46cf7ec373204
+      size: 5174
+    params:
+      params.yaml:
+        build_clean_manifest.project_root: .
+        predict.device: auto
+        predict.espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll
+        predict.model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
+        predict.target_sr: 16000
+    outs:
+    - path: data/manifests/en/pred_snr_0.jsonl
+      hash: md5
+      md5: 2190f4f7099b48a0a8accb6961023ec8
+      size: 4757
