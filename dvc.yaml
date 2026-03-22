@@ -177,3 +177,19 @@ stages:
       - data/manifests/en/pred_snr_0.jsonl
     metrics:
       - results/en/per_snr_0.json
+
+  plot_per_en:
+    cmd: >-
+      .\.venv\Scripts\python.exe scripts/plot_per.py
+      --input_metrics
+      results/en/per_snr_20.json
+      results/en/per_snr_10.json
+      results/en/per_snr_0.json
+      --output_plot results/en/per_vs_snr.png
+    deps:
+      - scripts/plot_per.py
+      - results/en/per_snr_20.json
+      - results/en/per_snr_10.json
+      - results/en/per_snr_0.json
+    plots:
+      - results/en/per_vs_snr.png

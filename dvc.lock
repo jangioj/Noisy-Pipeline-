@@ -303,3 +303,29 @@ stages:
       hash: md5
       md5: 3e79bb1a4b373dd034d6467c1f83b4ec
       size: 233
+  plot_per_en:
+    cmd: .\.venv\Scripts\python.exe scripts/plot_per.py --input_metrics 
+      results/en/per_snr_20.json results/en/per_snr_10.json 
+      results/en/per_snr_0.json --output_plot results/en/per_vs_snr.png
+    deps:
+    - path: results/en/per_snr_0.json
+      hash: md5
+      md5: 3e79bb1a4b373dd034d6467c1f83b4ec
+      size: 233
+    - path: results/en/per_snr_10.json
+      hash: md5
+      md5: e47fdaf5ed83bc902a435349dc6eb14d
+      size: 233
+    - path: results/en/per_snr_20.json
+      hash: md5
+      md5: 91787ca72b3d47a4607012284fd971c9
+      size: 232
+    - path: scripts/plot_per.py
+      hash: md5
+      md5: 63222423ee12490c59ccc1908b49bba5
+      size: 2046
+    outs:
+    - path: results/en/per_vs_snr.png
+      hash: md5
+      md5: d07d7b268a5432d237e74bcfd839d018
+      size: 59667
