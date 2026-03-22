@@ -2,3 +2,5 @@
 scripts/.idea/
 __pycache__/
 *.pyc
+data/bootstrap/
+data/raw/
