@@ -1,0 +1,3 @@
+build_clean_manifest:
+  project_root: .
+  espeak_lang: en

@@ -1,0 +1,56 @@
+schema: '2.0'
+stages:
+  build_clean_manifest_test:
+    cmd: .\.venv\Scripts\python.exe scripts/build_clean_manifest.py 
+      --input_manifest data/manifests/test/source.jsonl --output_manifest 
+      data/manifests/test/clean.jsonl --project_root . --espeak_lang en
+    deps:
+    - path: data/manifests/test/source.jsonl
+      hash: md5
+      md5: d0d2cd5d7f64062bfe834f327174ae1c
+      size: 3064
+    - path: data/raw/test/audio
+      hash: md5
+      md5: bd7b9dad81d9db2c0a87851ee1fc89a7.dir
+      size: 346076
+      nfiles: 10
+    - path: scripts/build_clean_manifest.py
+      hash: md5
+      md5: 80d8924073c2237e4cda763119c79e9c
+      size: 3855
+    params:
+      params.yaml:
+        build_clean_manifest.espeak_lang: en
+        build_clean_manifest.project_root: .
+    outs:
+    - path: data/manifests/test/clean.jsonl
+      hash: md5
+      md5: 9d38b23aa08f018437466c7ffb7ef377
+      size: 3752
+  build_clean_manifest:
+    cmd: .\.venv\Scripts\python.exe scripts/build_clean_manifest.py 
+      --input_manifest data/manifests/en/source.jsonl --output_manifest 
+      data/manifests/en/clean.jsonl --project_root . --espeak_lang en
+    deps:
+    - path: data/manifests/en/source.jsonl
+      hash: md5
+      md5: 04e35f4a8b0798c2dacc39f7851541ed
+      size: 3044
+    - path: data/raw/en/audio
+      hash: md5
+      md5: bd7b9dad81d9db2c0a87851ee1fc89a7.dir
+      size: 346076
+      nfiles: 10
+    - path: scripts/build_clean_manifest.py
+      hash: md5
+      md5: 80d8924073c2237e4cda763119c79e9c
+      size: 3855
+    params:
+      params.yaml:
+        build_clean_manifest.espeak_lang: en
+        build_clean_manifest.project_root: .
+    outs:
+    - path: data/manifests/en/clean.jsonl
+      hash: md5
+      md5: b21551412879ebd82a0ca93686ecfb46
+      size: 3732

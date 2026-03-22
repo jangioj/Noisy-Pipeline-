@@ -1,0 +1,17 @@
+stages:
+  build_clean_manifest:
+    cmd: >-
+      .\.venv\Scripts\python.exe scripts/build_clean_manifest.py
+      --input_manifest data/manifests/en/source.jsonl
+      --output_manifest data/manifests/en/clean.jsonl
+      --project_root ${build_clean_manifest.project_root}
+      --espeak_lang ${build_clean_manifest.espeak_lang}
+    deps:
+      - scripts/build_clean_manifest.py
+      - data/manifests/en/source.jsonl
+      - data/raw/en/audio
+    params:
+      - build_clean_manifest.project_root
+      - build_clean_manifest.espeak_lang
+    outs:
+      - data/manifests/en/clean.jsonl
