@@ -249,3 +249,57 @@ stages:
       hash: md5
       md5: 2190f4f7099b48a0a8accb6961023ec8
       size: 4757
+  evaluate_per_en_snr20:
+    cmd: .\.venv\Scripts\python.exe scripts/evaluate_per.py --input_manifest 
+      data/manifests/en/pred_snr_20.jsonl --output_metrics 
+      results/en/per_snr_20.json
+    deps:
+    - path: data/manifests/en/pred_snr_20.jsonl
+      hash: md5
+      md5: 0f9b350c14f8aef3b8b56e27e2e4526e
+      size: 5213
+    - path: scripts/evaluate_per.py
+      hash: md5
+      md5: 784a8ee3a1181c6233240a659ff62399
+      size: 4667
+    outs:
+    - path: results/en/per_snr_20.json
+      hash: md5
+      md5: 91787ca72b3d47a4607012284fd971c9
+      size: 232
+  evaluate_per_en_snr10:
+    cmd: .\.venv\Scripts\python.exe scripts/evaluate_per.py --input_manifest 
+      data/manifests/en/pred_snr_10.jsonl --output_metrics 
+      results/en/per_snr_10.json
+    deps:
+    - path: data/manifests/en/pred_snr_10.jsonl
+      hash: md5
+      md5: 4d0661505159239866311c3bf037c8a2
+      size: 5119
+    - path: scripts/evaluate_per.py
+      hash: md5
+      md5: 784a8ee3a1181c6233240a659ff62399
+      size: 4667
+    outs:
+    - path: results/en/per_snr_10.json
+      hash: md5
+      md5: e47fdaf5ed83bc902a435349dc6eb14d
+      size: 233
+  evaluate_per_en_snr0:
+    cmd: .\.venv\Scripts\python.exe scripts/evaluate_per.py --input_manifest 
+      data/manifests/en/pred_snr_0.jsonl --output_metrics 
+      results/en/per_snr_0.json
+    deps:
+    - path: data/manifests/en/pred_snr_0.jsonl
+      hash: md5
+      md5: 2190f4f7099b48a0a8accb6961023ec8
+      size: 4757
+    - path: scripts/evaluate_per.py
+      hash: md5
+      md5: 784a8ee3a1181c6233240a659ff62399
+      size: 4667
+    outs:
+    - path: results/en/per_snr_0.json
+      hash: md5
+      md5: 3e79bb1a4b373dd034d6467c1f83b4ec
+      size: 233

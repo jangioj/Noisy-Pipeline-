@@ -144,3 +144,36 @@ stages:
       - predict.espeak_library
     outs:
       - data/manifests/en/pred_snr_0.jsonl
+
+  evaluate_per_en_snr20:
+    cmd: >-
+      .\.venv\Scripts\python.exe scripts/evaluate_per.py
+      --input_manifest data/manifests/en/pred_snr_20.jsonl
+      --output_metrics results/en/per_snr_20.json
+    deps:
+      - scripts/evaluate_per.py
+      - data/manifests/en/pred_snr_20.jsonl
+    metrics:
+      - results/en/per_snr_20.json
+
+  evaluate_per_en_snr10:
+    cmd: >-
+      .\.venv\Scripts\python.exe scripts/evaluate_per.py
+      --input_manifest data/manifests/en/pred_snr_10.jsonl
+      --output_metrics results/en/per_snr_10.json
+    deps:
+      - scripts/evaluate_per.py
+      - data/manifests/en/pred_snr_10.jsonl
+    metrics:
+      - results/en/per_snr_10.json
+
+  evaluate_per_en_snr0:
+    cmd: >-
+      .\.venv\Scripts\python.exe scripts/evaluate_per.py
+      --input_manifest data/manifests/en/pred_snr_0.jsonl
+      --output_metrics results/en/per_snr_0.json
+    deps:
+      - scripts/evaluate_per.py
+      - data/manifests/en/pred_snr_0.jsonl
+    metrics:
+      - results/en/per_snr_0.json
