@@ -75,8 +75,8 @@ stages:
       size: 4733
     params:
       params.yaml:
-        build_clean_manifest.project_root: .
         noise.seed: 42
+        project.root: .
     outs:
     - path: data/manifests/en/noisy_snr_20.jsonl
       hash: md5
@@ -108,8 +108,8 @@ stages:
       size: 4733
     params:
       params.yaml:
-        build_clean_manifest.project_root: .
         noise.seed: 42
+        project.root: .
     outs:
     - path: data/manifests/en/noisy_snr_10.jsonl
       hash: md5
@@ -141,8 +141,8 @@ stages:
       size: 4733
     params:
       params.yaml:
-        build_clean_manifest.project_root: .
         noise.seed: 42
+        project.root: .
     outs:
     - path: data/manifests/en/noisy_snr_0.jsonl
       hash: md5
@@ -175,11 +175,11 @@ stages:
       size: 5174
     params:
       params.yaml:
-        build_clean_manifest.project_root: .
         predict.device: auto
         predict.espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll
         predict.model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
         predict.target_sr: 16000
+        project.root: .
     outs:
     - path: data/manifests/en/pred_snr_20.jsonl
       hash: md5
@@ -207,11 +207,11 @@ stages:
       size: 5174
     params:
       params.yaml:
-        build_clean_manifest.project_root: .
         predict.device: auto
         predict.espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll
         predict.model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
         predict.target_sr: 16000
+        project.root: .
     outs:
     - path: data/manifests/en/pred_snr_10.jsonl
       hash: md5
@@ -239,11 +239,11 @@ stages:
       size: 5174
     params:
       params.yaml:
-        build_clean_manifest.project_root: .
         predict.device: auto
         predict.espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll
         predict.model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
         predict.target_sr: 16000
+        project.root: .
     outs:
     - path: data/manifests/en/pred_snr_0.jsonl
       hash: md5
@@ -322,10 +322,379 @@ stages:
       size: 232
     - path: scripts/plot_per.py
       hash: md5
-      md5: 63222423ee12490c59ccc1908b49bba5
-      size: 2046
+      md5: 380cca2d8e445a012b099b790f4a4232
+      size: 3348
     outs:
     - path: results/en/per_vs_snr.png
       hash: md5
-      md5: d07d7b268a5432d237e74bcfd839d018
-      size: 59667
+      md5: 998263fd01e932c3a2d15b7a33722588
+      size: 61299
+  build_clean_manifest_fr:
+    cmd: .\.venv\Scripts\python.exe scripts/build_clean_manifest.py 
+      --input_manifest data/manifests/fr/source.jsonl --output_manifest 
+      data/manifests/fr/clean.jsonl --project_root . --espeak_lang fr
+    deps:
+    - path: data/manifests/fr/source.jsonl
+      hash: md5
+      md5: bc7bd13b28294cb641baa7ecd703eb7d
+      size: 4962
+    - path: data/raw/fr/audio
+      hash: md5
+      md5: 4fdc921e2b09474abc71f3d21f111877.dir
+      size: 1869498
+      nfiles: 10
+    - path: scripts/build_clean_manifest.py
+      hash: md5
+      md5: 80d8924073c2237e4cda763119c79e9c
+      size: 3855
+    params:
+      params.yaml:
+        lang_settings.fr.espeak_lang: fr
+        project.root: .
+    outs:
+    - path: data/manifests/fr/clean.jsonl
+      hash: md5
+      md5: ab01c2a2768c6d10057bbad78b96431f
+      size: 8843
+  build_noisy_manifest_fr_snr20:
+    cmd: .\.venv\Scripts\python.exe scripts/noisyator.py --input_manifest 
+      data/manifests/fr/clean.jsonl --output_manifest 
+      data/manifests/fr/noisy_snr_20.jsonl --output_audio_dir 
+      data/processed/fr/noisy/20 --project_root . --snr_db 20 --seed 42
+    deps:
+    - path: data/manifests/fr/clean.jsonl
+      hash: md5
+      md5: ab01c2a2768c6d10057bbad78b96431f
+      size: 8843
+    - path: data/raw/fr/audio
+      hash: md5
+      md5: 4fdc921e2b09474abc71f3d21f111877.dir
+      size: 1869498
+      nfiles: 10
+    - path: scripts/noisyator.py
+      hash: md5
+      md5: b5b7a99e58d6f75812a46dae80a9be05
+      size: 4733
+    params:
+      params.yaml:
+        noise.seed: 42
+        project.root: .
+    outs:
+    - path: data/manifests/fr/noisy_snr_20.jsonl
+      hash: md5
+      md5: 3e2cba68827ed18ea0b6754b640cc06c
+      size: 9023
+    - path: data/processed/fr/noisy/20
+      hash: md5
+      md5: 68d944e15235d852511f11080ceed758.dir
+      size: 19936952
+      nfiles: 10
+  build_noisy_manifest_fr_snr10:
+    cmd: .\.venv\Scripts\python.exe scripts/noisyator.py --input_manifest 
+      data/manifests/fr/clean.jsonl --output_manifest 
+      data/manifests/fr/noisy_snr_10.jsonl --output_audio_dir 
+      data/processed/fr/noisy/10 --project_root . --snr_db 10 --seed 42
+    deps:
+    - path: data/manifests/fr/clean.jsonl
+      hash: md5
+      md5: ab01c2a2768c6d10057bbad78b96431f
+      size: 8843
+    - path: data/raw/fr/audio
+      hash: md5
+      md5: 4fdc921e2b09474abc71f3d21f111877.dir
+      size: 1869498
+      nfiles: 10
+    - path: scripts/noisyator.py
+      hash: md5
+      md5: b5b7a99e58d6f75812a46dae80a9be05
+      size: 4733
+    params:
+      params.yaml:
+        noise.seed: 42
+        project.root: .
+    outs:
+    - path: data/manifests/fr/noisy_snr_10.jsonl
+      hash: md5
+      md5: c7ae0a758bff410485a0244f347851c8
+      size: 9023
+    - path: data/processed/fr/noisy/10
+      hash: md5
+      md5: ab681f62812075975b64a29f408d6c0f.dir
+      size: 19936952
+      nfiles: 10
+  build_noisy_manifest_fr_snr0:
+    cmd: .\.venv\Scripts\python.exe scripts/noisyator.py --input_manifest 
+      data/manifests/fr/clean.jsonl --output_manifest 
+      data/manifests/fr/noisy_snr_0.jsonl --output_audio_dir 
+      data/processed/fr/noisy/0 --project_root . --snr_db 0 --seed 42
+    deps:
+    - path: data/manifests/fr/clean.jsonl
+      hash: md5
+      md5: ab01c2a2768c6d10057bbad78b96431f
+      size: 8843
+    - path: data/raw/fr/audio
+      hash: md5
+      md5: 4fdc921e2b09474abc71f3d21f111877.dir
+      size: 1869498
+      nfiles: 10
+    - path: scripts/noisyator.py
+      hash: md5
+      md5: b5b7a99e58d6f75812a46dae80a9be05
+      size: 4733
+    params:
+      params.yaml:
+        noise.seed: 42
+        project.root: .
+    outs:
+    - path: data/manifests/fr/noisy_snr_0.jsonl
+      hash: md5
+      md5: 1d5452af8937eadd33e0bc8f2c23de91
+      size: 8993
+    - path: data/processed/fr/noisy/0
+      hash: md5
+      md5: 8619008d328e764240a655e4cdb132b5.dir
+      size: 19936952
+      nfiles: 10
+  predict_fr_snr20:
+    cmd: .\.venv\Scripts\python.exe scripts/predict_phonemes.py --input_manifest
+      data/manifests/fr/noisy_snr_20.jsonl --output_manifest 
+      data/manifests/fr/pred_snr_20.jsonl --project_root . --model_name 
+      facebook/wav2vec2-lv-60-espeak-cv-ft --device auto --target_sr 16000 
+      --espeak_library "C:/Program Files/eSpeak NG/libespeak-ng.dll"
+    deps:
+    - path: data/manifests/fr/noisy_snr_20.jsonl
+      hash: md5
+      md5: 3e2cba68827ed18ea0b6754b640cc06c
+      size: 9023
+    - path: data/processed/fr/noisy/20
+      hash: md5
+      md5: 68d944e15235d852511f11080ceed758.dir
+      size: 19936952
+      nfiles: 10
+    - path: scripts/predict_phonemes.py
+      hash: md5
+      md5: 1206840ce8bb79c8fbf46cf7ec373204
+      size: 5174
+    params:
+      params.yaml:
+        predict.device: auto
+        predict.espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll
+        predict.model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
+        predict.target_sr: 16000
+        project.root: .
+    outs:
+    - path: data/manifests/fr/pred_snr_20.jsonl
+      hash: md5
+      md5: 2c31715f48bb95bccc53b673318410d1
+      size: 12943
+  predict_fr_snr10:
+    cmd: .\.venv\Scripts\python.exe scripts/predict_phonemes.py --input_manifest
+      data/manifests/fr/noisy_snr_10.jsonl --output_manifest 
+      data/manifests/fr/pred_snr_10.jsonl --project_root . --model_name 
+      facebook/wav2vec2-lv-60-espeak-cv-ft --device auto --target_sr 16000 
+      --espeak_library "C:/Program Files/eSpeak NG/libespeak-ng.dll"
+    deps:
+    - path: data/manifests/fr/noisy_snr_10.jsonl
+      hash: md5
+      md5: c7ae0a758bff410485a0244f347851c8
+      size: 9023
+    - path: data/processed/fr/noisy/10
+      hash: md5
+      md5: ab681f62812075975b64a29f408d6c0f.dir
+      size: 19936952
+      nfiles: 10
+    - path: scripts/predict_phonemes.py
+      hash: md5
+      md5: 1206840ce8bb79c8fbf46cf7ec373204
+      size: 5174
+    params:
+      params.yaml:
+        predict.device: auto
+        predict.espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll
+        predict.model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
+        predict.target_sr: 16000
+        project.root: .
+    outs:
+    - path: data/manifests/fr/pred_snr_10.jsonl
+      hash: md5
+      md5: 7cda5359e98c6717054485cd9b07bbb7
+      size: 12434
+  predict_fr_snr0:
+    cmd: .\.venv\Scripts\python.exe scripts/predict_phonemes.py --input_manifest
+      data/manifests/fr/noisy_snr_0.jsonl --output_manifest 
+      data/manifests/fr/pred_snr_0.jsonl --project_root . --model_name 
+      facebook/wav2vec2-lv-60-espeak-cv-ft --device auto --target_sr 16000 
+      --espeak_library "C:/Program Files/eSpeak NG/libespeak-ng.dll"
+    deps:
+    - path: data/manifests/fr/noisy_snr_0.jsonl
+      hash: md5
+      md5: 1d5452af8937eadd33e0bc8f2c23de91
+      size: 8993
+    - path: data/processed/fr/noisy/0
+      hash: md5
+      md5: 8619008d328e764240a655e4cdb132b5.dir
+      size: 19936952
+      nfiles: 10
+    - path: scripts/predict_phonemes.py
+      hash: md5
+      md5: 1206840ce8bb79c8fbf46cf7ec373204
+      size: 5174
+    params:
+      params.yaml:
+        predict.device: auto
+        predict.espeak_library: C:/Program Files/eSpeak NG/libespeak-ng.dll
+        predict.model_name: facebook/wav2vec2-lv-60-espeak-cv-ft
+        predict.target_sr: 16000
+        project.root: .
+    outs:
+    - path: data/manifests/fr/pred_snr_0.jsonl
+      hash: md5
+      md5: 0f662ade54417b7bad3f12698ba46626
+      size: 11437
+  evaluate_per_fr_snr20:
+    cmd: .\.venv\Scripts\python.exe scripts/evaluate_per.py --input_manifest 
+      data/manifests/fr/pred_snr_20.jsonl --output_metrics 
+      results/fr/per_snr_20.json
+    deps:
+    - path: data/manifests/fr/pred_snr_20.jsonl
+      hash: md5
+      md5: 2c31715f48bb95bccc53b673318410d1
+      size: 12943
+    - path: scripts/evaluate_per.py
+      hash: md5
+      md5: 784a8ee3a1181c6233240a659ff62399
+      size: 4667
+    outs:
+    - path: results/fr/per_snr_20.json
+      hash: md5
+      md5: d90ad8e815fa7fbea54201975f7156c4
+      size: 236
+  evaluate_per_fr_snr10:
+    cmd: .\.venv\Scripts\python.exe scripts/evaluate_per.py --input_manifest 
+      data/manifests/fr/pred_snr_10.jsonl --output_metrics 
+      results/fr/per_snr_10.json
+    deps:
+    - path: data/manifests/fr/pred_snr_10.jsonl
+      hash: md5
+      md5: 7cda5359e98c6717054485cd9b07bbb7
+      size: 12434
+    - path: scripts/evaluate_per.py
+      hash: md5
+      md5: 784a8ee3a1181c6233240a659ff62399
+      size: 4667
+    outs:
+    - path: results/fr/per_snr_10.json
+      hash: md5
+      md5: c7e032adee86b660988c3d5de5b87c6c
+      size: 236
+  evaluate_per_fr_snr0:
+    cmd: .\.venv\Scripts\python.exe scripts/evaluate_per.py --input_manifest 
+      data/manifests/fr/pred_snr_0.jsonl --output_metrics 
+      results/fr/per_snr_0.json
+    deps:
+    - path: data/manifests/fr/pred_snr_0.jsonl
+      hash: md5
+      md5: 0f662ade54417b7bad3f12698ba46626
+      size: 11437
+    - path: scripts/evaluate_per.py
+      hash: md5
+      md5: 784a8ee3a1181c6233240a659ff62399
+      size: 4667
+    outs:
+    - path: results/fr/per_snr_0.json
+      hash: md5
+      md5: 119b7c6c73ede06a1efbd8c954aa4afc
+      size: 233
+  plot_per_fr:
+    cmd: .\.venv\Scripts\python.exe scripts/plot_per.py --input_metrics 
+      results/fr/per_snr_20.json results/fr/per_snr_10.json 
+      results/fr/per_snr_0.json --output_plot results/fr/per_vs_snr.png
+    deps:
+    - path: results/fr/per_snr_0.json
+      hash: md5
+      md5: 119b7c6c73ede06a1efbd8c954aa4afc
+      size: 233
+    - path: results/fr/per_snr_10.json
+      hash: md5
+      md5: c7e032adee86b660988c3d5de5b87c6c
+      size: 236
+    - path: results/fr/per_snr_20.json
+      hash: md5
+      md5: d90ad8e815fa7fbea54201975f7156c4
+      size: 236
+    - path: scripts/plot_per.py
+      hash: md5
+      md5: 380cca2d8e445a012b099b790f4a4232
+      size: 3348
+    outs:
+    - path: results/fr/per_vs_snr.png
+      hash: md5
+      md5: 6185fb904d10ec120b169065d4df2d25
+      size: 70810
+  build_clean_manifest_en:
+    cmd: .\.venv\Scripts\python.exe scripts/build_clean_manifest.py 
+      --input_manifest data/manifests/en/source.jsonl --output_manifest 
+      data/manifests/en/clean.jsonl --project_root . --espeak_lang en
+    deps:
+    - path: data/manifests/en/source.jsonl
+      hash: md5
+      md5: 04e35f4a8b0798c2dacc39f7851541ed
+      size: 3044
+    - path: data/raw/en/audio
+      hash: md5
+      md5: bd7b9dad81d9db2c0a87851ee1fc89a7.dir
+      size: 346076
+      nfiles: 10
+    - path: scripts/build_clean_manifest.py
+      hash: md5
+      md5: 80d8924073c2237e4cda763119c79e9c
+      size: 3855
+    params:
+      params.yaml:
+        lang_settings.en.espeak_lang: en
+        project.root: .
+    outs:
+    - path: data/manifests/en/clean.jsonl
+      hash: md5
+      md5: b21551412879ebd82a0ca93686ecfb46
+      size: 3732
+  plot_per_all:
+    cmd: .\.venv\Scripts\python.exe scripts/plot_per.py --input_metrics 
+      results/en/per_snr_20.json results/en/per_snr_10.json 
+      results/en/per_snr_0.json results/fr/per_snr_20.json 
+      results/fr/per_snr_10.json results/fr/per_snr_0.json --output_plot 
+      results/per_vs_snr_all.png
+    deps:
+    - path: results/en/per_snr_0.json
+      hash: md5
+      md5: 3e79bb1a4b373dd034d6467c1f83b4ec
+      size: 233
+    - path: results/en/per_snr_10.json
+      hash: md5
+      md5: e47fdaf5ed83bc902a435349dc6eb14d
+      size: 233
+    - path: results/en/per_snr_20.json
+      hash: md5
+      md5: 91787ca72b3d47a4607012284fd971c9
+      size: 232
+    - path: results/fr/per_snr_0.json
+      hash: md5
+      md5: 119b7c6c73ede06a1efbd8c954aa4afc
+      size: 233
+    - path: results/fr/per_snr_10.json
+      hash: md5
+      md5: c7e032adee86b660988c3d5de5b87c6c
+      size: 236
+    - path: results/fr/per_snr_20.json
+      hash: md5
+      md5: d90ad8e815fa7fbea54201975f7156c4
+      size: 236
+    - path: scripts/plot_per.py
+      hash: md5
+      md5: 380cca2d8e445a012b099b790f4a4232
+      size: 3348
+    outs:
+    - path: results/per_vs_snr_all.png
+      hash: md5
+      md5: 0d43237901bbae8fe57e64945c5d2bcb
+      size: 104443

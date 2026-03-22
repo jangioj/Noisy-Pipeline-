@@ -1,6 +1,11 @@
-build_clean_manifest:
-  project_root: .
-  espeak_lang: en
+project:
+  root: .
+
+lang_settings:
+  en:
+    espeak_lang: en
+  fr:
+    espeak_lang: fr
 
 noise:
   seed: 42
